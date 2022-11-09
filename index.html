@@ -1,0 +1,458 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manu Page</title>
+    <link rel="stylesheet" href="./navbar.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      #navbar {
+      
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 70px;
+        width: 98%;
+        padding: 10px;
+        
+        color: white;
+        margin: 10px auto;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 10px;
+      }
+
+      #profile img {
+      
+        height: 98%;
+      }
+
+      #navbar > div:nth-child(2) {
+      
+        width: 45%;
+      }
+
+      #logo {
+      
+        height: 101%;
+        width: 186%;
+      }
+      input {
+        width: 100%;
+        height: 90%;
+      
+        font-size: 25px;
+
+        border-radius: 10px;
+        border: 1px solid darkcyan;
+        text-align: left;
+        padding-left: 10px;
+        cursor: pointer;
+      }
+
+      .display-none {
+        visibility: hidden;
+      }
+
+      #display {
+        visibility: visible;
+      }
+
+      #items {
+
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 80vh;
+      }
+
+      .food_info {
+
+        width: 28%;
+        text-align: center;
+        font-weight: bold;
+        margin: auto 3px;
+
+      }
+
+      #items > div:hover {
+     
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+
+      #items > div {
+
+        height: 45%;
+        width: 98%;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        border-radius: 10px;
+        display: flex;
+        align-self: center;
+        justify-content: space-evenly;
+       
+        margin: auto;
+        text-align: center;
+        padding: 20px;
+
+        
+        padding-bottom: 70px;
+      }
+
+      h {
+        font-weight: bold;
+        background-color: green;
+      }
+
+      #items img {
+     
+        display: inline-block;
+        width: 40%;
+        height: 120%;
+        width: 30%;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+      
+      }
+
+      .order {
+        width: 45%;
+        margin: 10px auto;
+        color: rgb(13, 12, 12);
+        cursor: pointer;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+        padding: 3px;
+        display: flex;
+        margin-left: 90%;
+      }
+
+      .order:hover {
+        background-color: rgb(28, 157, 21);
+      }
+
+      button {
+        background-color: rgb(145, 135, 195);
+        color: white;
+        font-size: 24px;
+        width: 15%;
+        margin: auto 10px;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+        height: 40px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: rgb(18, 171, 146);
+      }
+
+      h2 + h3 {
+    
+        width: 40%;
+        font-size: 22px;
+        margin: 16px auto;
+      }
+
+      h4 {
+      
+        width: 40%;
+        font-size: 22px;
+        margin: 6px auto;
+      }
+
+      h1 {
+
+        margin: 15px auto;
+        width: 150%;
+        text-align: start;
+        margin-left: 136px;
+      }
+
+      h1 + h2 {
+       
+        margin: 8px auto;
+        width: 45%;
+        font-size: 27px;
+        border-radius: 10px;
+      }
+
+      h1 + h2:hover {
+        background-color: rgb(37, 135, 204);
+      }
+      #for-Login-message {
+        width: 50%;
+      
+        height: 300px;
+        margin: 100px auto;
+        box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+        border-radius: 10px;
+        font-size: 30px;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        margin-top: 200px;
+        background-color: rgb(25, 191, 25);
+
+ 
+      }
+      #display-none {
+        display: none;
+      }
+      #display {
+        visibility: visible;
+      }
+      h3 + p {
+   
+        font-size: 25px;
+        background-color: rgb(41, 219, 145);
+
+        display: flex;
+        justify-content: right;
+        margin-right: -4px;
+      }
+    </style>
+  </head>
+
+  <body onload="NextPage()">
+    <div id="navbar">
+      <div>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhQUwFWD49ksfrsR7_TDi6Q5x_5NtBotFUcw&usqp=CAU"
+          alt=""
+          id="logo"
+        />
+      </div>
+
+      <div id="search">
+        <input type="text" name="" id="" placeholder="search Food..." />
+      </div>
+      <a href="admin.html">Add Food</a>
+      <a href="Login.html">Login</a>
+      <a href="signUp.html">Signup</a>
+      <div id="profile">
+        <img
+          src="data:image/png;base64,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"
+          alt=""
+        />
+      </div>
+    </div>
+
+    <div id="display-all-data">
+   
+      <button id="LTH">Sort by Low To High</button>
+      <button id="HTL">Sort by High To Low</button>
+      
+      <button id="prevoiusPage">Prevoius Page</button>
+      <button onclick="NextPage()" id="nextPage">Next Page</button>
+
+      <div id="items"></div>
+    </div>
+    <div id="for-Login-message"></div>
+  </body>
+</html>
+<script>
+  let length;
+  let GetLen = async () => {
+    let respone = await fetch("http://localhost:3000/api/item");
+    let Alldata = await respone.json();
+   
+    length = Math.ceil(Alldata.length / 2);
+  };
+  GetLen();
+  let flag;
+  onloadcheck();
+
+  function onloadcheck() {
+    let flag = localStorage.getItem("loginFlag");
+
+    if (flag == "false") {
+      alert("Please Login Your Account");
+
+      document
+        .getElementById("display-all-data")
+        .setAttribute("id", "display-none");
+      document.getElementById("for-Login-message").innerHTML =
+        "Plase Login Your Account";
+      return;
+    } else {
+
+      document
+        .getElementById("for-Login-message")
+        .setAttribute("id", "display-none");
+      document.getElementById("display-all-data").setAttribute("id", "display");
+      return;
+    }
+  }
+
+  let i = 1;
+  let prevspage = document.getElementById("prevoiusPage");
+  prevspage.addEventListener("click", GoPrevsPage);
+  let Prepage_flag = false;
+  let pagepre = localStorage.getItem("pageNo");
+  
+  async function GoPrevsPage() {
+    pagepre = localStorage.getItem("pageNo");
+
+    pagepre--;
+
+    let res = await fetch(
+      `http://localhost:3000/api/item/?_page=${pagepre}&_limit=2`
+    );
+   
+    let Sortingdata = await res.json();
+   
+    if (pagepre <= 0) {
+      pagepre = length;
+    }
+    localStorage.setItem("pageNo", pagepre);
+ 
+    append(Sortingdata);
+  }
+
+  let ServerData = null;
+
+  let page1 = 0;
+  let flag1 = true;
+  let flag2 = true;
+
+  let flag_LtoH = false;
+  let flag_HtoL = false;
+  async function NextPage() {
+    setTimeout(function () {}, 1000);
+
+    page1++;
+
+    if (flag_LtoH == true) {
+      funLToH();
+      return;
+    }
+    if (flag_HtoL == true) {
+      funHtoL();
+      return;
+    }
+    localStorage.setItem("pageNo", page1);
+    let res = await fetch(
+      `http://localhost:3000/api/item/?_page=${page1}&_limit=2`
+    );
+    if (page1 == 1 && flag1 == true) {
+      flag1 = false;
+      document
+        .getElementById("prevoiusPage")
+        .setAttribute("class", "display-none");
+    } else if (page1 == 2 && flag2 == true) {
+      flag2 = false;
+      document.getElementById("prevoiusPage").setAttribute("id", "display");
+
+    }
+
+    let data1 = await res.json();
+
+    ServerData = data1;
+    append(data1);
+    if (page1 == length) {
+      page1 = 0;
+    }
+  }
+
+  let container = document.getElementById("items");
+  let append = (data) => {
+ 
+    container.innerHTML = null;
+    data.forEach(({ imageUrl, Title, price, id, Description, rating }) => {
+      console.log(Title, price, id, Description, rating);
+      let div = document.createElement("div");
+
+      let img = document.createElement("img");
+      img.setAttribute("src", imageUrl);
+
+      let title = document.createElement("h1");
+      title.innerHTML = ` ${Title}`;
+
+      let price1 = document.createElement("h2");
+      price1.innerHTML = `Price: ${price}`;
+
+      let id1 = document.createElement("h3");
+      id1.innerHTML = "Id:- " + id;
+
+      let desc = document.createElement("h3");
+      desc.innerHTML = Description;
+      let rating1 = document.createElement("h4");
+      rating1.innerHTML = "Rating- " + rating;
+    
+      let view = document.createElement("h2");
+
+      let remdom = Math.floor(Math.random() * (6000 - 5000) + 5000);
+      view.innerHTML = "view:-" + remdom;
+      let dis = document.createElement("h3");
+
+      let discount = Math.floor(Math.random() * (30 - 20) + 20);
+      dis.innerHTML = `Discount:- ${discount}%`;
+   
+
+      let order = document.createElement("p");
+      order.setAttribute("class", "order");
+      order.innerHTML = "Order Online >";
+
+      let div1 = document.createElement("div");
+      div1.setAttribute("class", "food_info");
+      div1.append(title, price1, rating1, view, dis, order);
+
+      div.append(img, div1);
+      container.append(div);
+    });
+  };
+
+  document.getElementById("LTH").addEventListener("click", funLToH);
+
+  let lp = 0;
+
+  async function funLToH() {
+    flag_LtoH = true;
+  
+    lp++;
+ 
+    let res = await fetch(
+      `http://localhost:3000/api/item/?_sort=price&_order=asc&_page=${lp}&_limit=2`
+    );
+    let Sortingdata = await res.json();
+   
+    if (lp == length) {
+      lp = 0;
+    }
+  
+    append(Sortingdata);
+  }
+
+ 
+  document.getElementById("HTL").addEventListener("click", funHtoL);
+  let sortBtHtoL = document.getElementById("LTH");
+  let hp = 0;
+
+  async function funHtoL() {
+    flag_HtoL = true;
+  
+    hp++;
+
+    let res = await fetch(
+      `http://localhost:3000/api/item/?_sort=price&_order=desc&_page=${hp}&_limit=2`
+    );
+    let Sortingdata = await res.json();
+   
+    if (hp == length) {
+      hp = 0;
+    }
+
+    append(Sortingdata);
+  }
+</script>

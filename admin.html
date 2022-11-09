@@ -1,0 +1,153 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./navbar.css" />
+    <style>
+      form {
+    
+        height: 500px;
+
+        margin: auto;
+        width: 40%;
+        text-align: center;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        border-radius: 10px;
+        padding: 10px 3px;
+        margin-top: 50px;
+      }
+      input {
+        border: 1px solid rgb(34, 178, 113);
+        width: 70%;
+        height: 40px;
+        margin: 10px;
+      }
+      label {
+        font-size: 18px;
+      }
+      #btn {
+    
+        display: block;
+        margin: auto;
+        width: 70%;
+        height: 40px;
+        background-color: teal;
+        color: wheat;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      #btn:hover {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        /* border: 1px solid red; */
+        cursor: pointer;
+      }
+      #logo {
+        width: 170%;
+        height: 87%;
+
+        margin-left: 13px;
+        margin-right: -11px;
+      }
+      #notvisible {
+        visibility: hidden;
+      }
+      #visible {
+        visibility: visible;
+      }
+      button {
+  
+        display: block;
+        margin: auto;
+        width: 70%;
+        height: 40px;
+        background-color: teal;
+        color: wheat;
+        font-size: 20px;
+        cursor: pointer;
+      }
+      button:hover {
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        /* border: 1px solid red; */
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="navbar">
+      <div>
+        <img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhQUwFWD49ksfrsR7_TDi6Q5x_5NtBotFUcw&usqp=CAU"
+          alt=""
+          id="logo"
+        />
+      </div>
+
+      <a href="index.html">Home</a>
+      <a href="Login.html">Login</a>
+      <a href="signUp.html">Signup</a>
+    </div>
+
+    <form id="add_item">
+      <h1>Add Food</h1>
+      <input id="img" type="url" placeholder="Image URL" />
+      <input type="text" placeholder="Title" id="title" />
+      <input type="number" placeholder="price" id="price" />
+      <input type="text" name="" placeholder="Rating" id="rating" />
+      <input type="text" name="" id="desc" placeholder="Description" />
+      <input type="submit" name="" id="btn" value="Submit " />
+      <!-- <button onclick="Additem()" id="btn">Submit</button> -->
+    </form>
+  </body>
+</html>
+<script>
+  checkAdmin();
+  function checkAdmin() {
+    let data = JSON.parse(localStorage.getItem("SiginData"));
+    console.log("data ", data);
+
+    if (data.description == "admin") {
+      let flg = true;
+      document.getElementById("add_item").setAttribute("id", "visible");
+    } else {
+      let flg = false;
+      document.getElementById("add_item").setAttribute("id", "notvisible");
+      alert("You Are Not A  Authorised Person");
+      window.location.href = "index.html";
+    }
+  }
+
+  let Additem = (event) => {
+    event.preventDefault();
+
+    let imageUrl = document.getElementById("img").value;
+    let Title = document.getElementById("title").value;
+    let price = +document.getElementById("price").value;
+    let rating = +document.getElementById("rating").value;
+    let Description = document.getElementById("desc").value;
+    let Data = { imageUrl, Title, price, rating, Description };
+
+    fetch("http://localhost:3000/api/item", {
+      method: "POST",
+      body: JSON.stringify(Data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        // return res.json()
+        console.log("res ", res);
+      })
+      .catch((err) => {
+        console.log("err ", err.message);
+      });
+  };
+  document.querySelector("form").addEventListener("submit", (event) => {
+    Additem(event);
+  });
+</script>

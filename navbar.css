@@ -1,0 +1,16 @@
+#navbar{
+    border: 1px solid  red;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    width: 100%;
+    justify-content: space-evenly;
+    text-decoration: none;
+    background-color:teal;
+    color: white;
+    font-size: 25px;
+}
+a{
+text-decoration: none;
+color: white;
+}

@@ -1,0 +1,134 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup PAge</title>
+    <link rel="stylesheet" href="./navbar.css">
+    <style>
+        
+#signup{
+ 
+    height: 550px;
+  
+    margin: auto;
+    width: 40%;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    padding: 10px 3px;
+    margin-top: 100px;
+  
+}
+input{
+ 
+      width: 70%; 
+    height: 40px;
+    margin: 10px; 
+    border-radius: 10px;
+  border: 1px solid;
+   
+
+}
+label{
+    font-size: 18px;
+    
+}
+button{
+
+    display: block;
+    margin: auto;
+    width: 70%;
+    height: 40px;
+    background-color:teal;
+    color: wheat;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+button:hover{
+
+ 
+    cursor: pointer;
+    background-color: rgb(56, 203, 167);
+
+
+
+}
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <a href="index.html">Home</a>
+        <a href="admin.html">Add Food</a>
+        <a href="Login.html">Login</a>
+        <a href="signUp.html">Signup</a>
+    </div>
+  <div id="signup">
+        <form id="form" action="#">
+            <h1>SignUp Page</h1>
+            <label for="">Name</label>
+            <input type="text" name="" id="name" placeholder="Enter Your Name" required><br>
+            <label for="">Email</label>
+            <input type="text" name="" id="email" placeholder="Enter your Email Address" required><br>
+            <label for="">Password</label>
+            <input type="password" name="" id="password" placeholder="Enter Password" required><br>
+            <label for="">User Name</label>
+            <input type="text" name="" id="username"required ><br>
+            <label for="">Contact Number</label>
+            <input type="number" name="" id="mobile" required><br>
+            <label for="">Description</label>
+            <input type="text" name="" id="description" placeholder="Description" required><br>
+        </form>
+        <button onclick="Registor()">Signup</button>
+    </div>
+</body>
+</html>
+<script>
+async function Registor(){ 
+let form=document.getElementById("form");
+
+let signup_data={
+name:form.name.value,
+email:form.email.value,
+password:form.password.value,
+username:form.username.value,
+mobile:form.mobile.value,
+description:form.description.value,
+}
+
+signup_data=JSON.stringify(signup_data)
+
+let signup_api_link='https://masai-api-mocker.herokuapp.com/auth/register';
+
+
+let response=await fetch(signup_api_link,{
+method:'POST',
+ 
+    body:signup_data,
+    headers:
+    {
+         'Content-Type':'application/json'
+    }
+});
+let data=await response.json()
+
+
+
+
+if(data.error== true){
+alert("Registration failed, user already exists")
+window.location.href="login.html"
+}
+else if(data.error== false){
+alert(`${form.name.value} Your Registration is Successful`);
+
+
+window.location.href="login.html"
+
+}
+}
+
+
+</script>

@@ -1,0 +1,145 @@
+~<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignIn Page Chandu(fw19_1036)</title>
+    <link rel="stylesheet" href="./navbar.css">
+    <style>
+        input:last-child{
+
+    display: block;
+    margin: auto;
+    width: 50%;
+    height: 40px;
+    background-color:teal;
+    color: wheat;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin-top: 20px;
+
+}
+
+        #signin {
+     
+            height: 400px;
+
+            margin: auto;
+            width: 40%;
+            text-align: center;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            border-radius: 10px;
+            margin-top:60px;
+        }
+
+        input {
+  
+            width: 70%;
+            height: 40px;
+            margin: 10px;
+            margin: 20px auto;
+
+        }
+
+        label {
+            font-size: 18px;
+
+        }
+
+     
+
+        input:last-child:hover {
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+        
+            cursor: pointer;
+            background-color: rgb(93, 128, 188);
+            border-radius: 10px;
+        }
+        
+
+    </style>
+</head>
+
+<body>
+
+    <div id="navbar">
+        <a href="index.html">Home</a>
+        <a href="admin.html">Add Food</a>
+        <a href="Login.html">Login</a>
+        <a href="signUp.html">Signup</a>
+    </div>
+    <div id="signin">
+        <form id="form" action="#">
+            <h1>SignIn Account</h1>
+
+            <label for="">Username</label>
+            <input type="text" name="" id="username" placeholder="Enter your Username" required><br>
+            <label for="">Password</label>
+            <input type="password" name="" id="password" placeholder="Enter Password" required><br>
+
+            <input  type="submit" value="submit">
+
+        </form>
+
+    </div>
+</body>
+
+</html>
+<script  type="module">
+        let loginFlag=false;
+        localStorage.setItem("loginFlag",loginFlag)
+    let form = document.getElementById("form");
+    form.addEventListener("submit", Login)
+    async function Login(event) {
+        event.preventDefault();
+        let login_data = {
+            username: form.username.value,
+            password: form.password.value,
+        }
+        let body1 = JSON.stringify(login_data)
+        let res = await fetch("https://masai-api-mocker.herokuapp.com/auth/login", {
+            method: 'POST',
+            body: body1,
+            headers:
+            {
+                'Content-Type': 'application/json',
+            }
+        })
+        let data = await res.json();
+     
+        if(data.error==true){
+            alert("Invalid login creadentials")
+        }else if(data.error==false){
+          
+            localStorage.setItem("loginFlag","true")
+            alert(`${form.username.value} Your Login is Successful`);
+            GetProfileData(data.token, form.username.value)
+        }
+      
+    }
+
+
+    function GetProfileData(token, username) {
+        fetch(`https://masai-api-mocker.herokuapp.com/user/${username}`, {
+            headers: {
+                Authorization: ` Bearer ${token}`,
+            }
+        }).then((res) => {
+            return res.json()
+        }).then((res) => {
+
+   
+            localStorage.setItem("SiginData",JSON.stringify(res));
+            window.location.href="index.html"
+
+        }).catch((err) => {
+ 
+
+        })
+    }
+
+
+
+</script>
